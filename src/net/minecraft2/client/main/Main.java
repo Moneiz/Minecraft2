@@ -108,7 +108,7 @@ public class Main {
 			}
 		});
 		Thread.currentThread().setName("Processus principal");
-		//(new Minecraft(gameconfig)).run();
+		(new Minecraft(gameconfig)).run();
 	}
 	private static boolean isNullOrEmpty(String str) {
 		return str != null && str.isEmpty();

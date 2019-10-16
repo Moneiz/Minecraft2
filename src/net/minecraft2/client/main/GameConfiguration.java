@@ -5,6 +5,8 @@ import java.net.Proxy;
 
 import com.mojang.authlib.properties.PropertyMap;
 
+import net.minecraft2.client.resources.ResourceIndex;
+import net.minecraft2.client.resources.ResourceIndexFolder;
 import net.minecraft2.client.util.Session;
 
 public class GameConfiguration {
@@ -44,6 +46,10 @@ public class GameConfiguration {
 			this.resourcePacksDir = resourcePacksDir;
 			this.assetsDir = assetsDir;
 			this.assetIndex = assetIndex;
+		}
+		public ResourceIndex getAssetsIndex() {
+			// TODO Auto-generated method stub
+			return (ResourceIndex) (this.assetIndex == null ? new ResourceIndexFolder(this.assetsDir) : new ResourceIndex(this.assetsDir, this.assetIndex));
 		}
 	}
 	public static class GameInformation{

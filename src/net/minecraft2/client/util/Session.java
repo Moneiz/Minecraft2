@@ -36,4 +36,13 @@ public class Session {
 			}
 		}
 	}
+
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.username;
+	}
+
+	public String getSessionID() {
+		return "token:"+token+":"+playerID;
+	}
 }
