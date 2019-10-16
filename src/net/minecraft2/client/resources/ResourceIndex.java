@@ -28,6 +28,10 @@ public class ResourceIndex {
 	
 	BufferedReader bufferedreader = null;
 	
+	public ResourceIndex() {
+		
+	}
+	
 	public ResourceIndex(File assetsDir, String assetIndex) {
 
 		File file1 = new File(assetsDir, "objects");
