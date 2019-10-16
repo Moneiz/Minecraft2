@@ -48,7 +48,6 @@ public class GameConfiguration {
 			this.assetIndex = assetIndex;
 		}
 		public ResourceIndex getAssetsIndex() {
-			// TODO Auto-generated method stub
 			return (ResourceIndex) (this.assetIndex == null ? new ResourceIndexFolder(this.assetsDir) : new ResourceIndex(this.assetsDir, this.assetIndex));
 		}
 	}

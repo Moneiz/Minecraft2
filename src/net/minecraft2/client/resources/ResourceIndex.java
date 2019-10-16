@@ -28,7 +28,7 @@ public class ResourceIndex {
 	
 	BufferedReader bufferedreader = null;
 	
-	public ResourceIndex() {
+	protected ResourceIndex() {
 		
 	}
 	
@@ -56,7 +56,7 @@ public class ResourceIndex {
 			}
 			
 		} catch (FileNotFoundException ex) {
-			LOGGER.error("Impossible de trouver l'index du fichier ressource: {}",(Object)file2);
+			LOGGER.error("Impossible de trouver l'index du fichier ressource: {} ",(Object)file2);
 		}catch(JsonParseException ex) {
 			LOGGER.error("Impossible de convertir l'index du fichier ressource: {}",(Object)file2);
 		}

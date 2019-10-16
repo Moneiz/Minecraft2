@@ -1,14 +1,21 @@
 package net.minecraft2.client;
 
+import java.awt.Image;
 import java.io.File;
 import java.net.Proxy;
+import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.UUID;
+
+import javax.imageio.ImageIO;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.Sys;
+import org.lwjgl.opengl.DisplayMode;
 
+import com.google.common.collect.Lists;
 import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
@@ -18,6 +25,7 @@ import net.minecraft2.client.main.GameConfiguration;
 import net.minecraft2.client.resources.DefaultResourcePack;
 import net.minecraft2.client.tutorial.Tutorial;
 import net.minecraft2.client.util.Session;
+import net.minecraft2.init.Bootstrap;
 import net.minecraft2.profiler.ISnooperInfo;
 import net.minecraft2.profiler.Snooper;
 import net.minecraft2.server.MinecraftServer;
@@ -32,6 +40,10 @@ public class Minecraft implements ISnooperInfo {
 	private static final Logger LOGGER = LogManager.getLogger();
 	private static final ResourceLocation LOCATION_MOJANG_PNG = new ResourceLocation("textures/gui/title/mojang.png");
 	public static final boolean IS_RUNNING_ON_PC = Util.getOSType() == Util.EnumOS.OSX;
+
+	public static byte[] memoryReserve = new byte[10485760];
+	private static final List<DisplayMode> MAC_DISPLAY_MODE = Lists.newArrayList(new DisplayMode(2560, 1600), new DisplayMode(2880, 1800));
+	
 	
 	private final File fileResourcePacks;
 	private final PropertyMap twitchDetails;
@@ -59,6 +71,9 @@ public class Minecraft implements ISnooperInfo {
 	private final boolean isDemo;
 	private final DefaultResourcePack mcDefaultResourcePack;
 	
+	private String serverName;
+	private int serverPort;
+	
 	private final MinecraftSessionService sessionService;
 	private final GuiToast guiToast;
 	private final Tutorial tutorial;
@@ -77,15 +92,20 @@ public class Minecraft implements ISnooperInfo {
 		sessionService = (new YggdrasilAuthenticationService(proxy, UUID.randomUUID().toString())).createMinecraftSessionService();
 		session = gc.userInfo.session;
 		LOGGER.info("Setting user: {}",(Object)this.session.getUsername());
-		LOGGER.info("(Session ID is {}",(Object)this.session.getSessionID());
+		LOGGER.debug("(Session ID is {}",(Object)this.session.getSessionID());
 		isDemo = gc.gameInfo.isDemo;
 		tempDisplayWidth = gc.displayInfo.width;
 		tempDisplayHeight = gc.displayInfo.height;
 		jvm64bit = isJvm64Bit();
 		theIntegratedServer = null;
 		if(gc.serverInfo.serverName != null) {
-			
+			this.serverName = gc.serverInfo.serverName;
+			this.serverPort = gc.serverInfo.serverPort;
 		}
+		ImageIO.setUseCache(false);
+		Locale.setDefault(Locale.ROOT);
+		Bootstrap.register();
+		//TextComponentKeybind a;
 		guiToast = new GuiToast(this);
 		tutorial = new Tutorial(this);
 		dataFixer = DataFixesManager.createFixer();

@@ -2,19 +2,21 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="jars/jopt-simple-5.0.3.jar"/>
-	<classpathentry kind="lib" path="jars/gson-2.8.0.jar"/>
-	<classpathentry kind="lib" path="jars/authlib-1.5.25.jar"/>
-	<classpathentry kind="lib" path="jars/lwjgl-2.9.4-nightly-20150209.jar">
+	<classpathentry kind="lib" path="jars/libs/authlib-1.5.25.jar"/>
+	<classpathentry kind="lib" path="jars/libs/commons-compress-1.8.1.jar"/>
+	<classpathentry kind="lib" path="jars/libs/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="jars/libs/commons-lang3-3.5.jar"/>
+	<classpathentry kind="lib" path="jars/libs/gson-2.8.0.jar"/>
+	<classpathentry kind="lib" path="jars/libs/guava-21.0.jar"/>
+	<classpathentry kind="lib" path="jars/libs/jopt-simple-5.0.3.jar"/>
+	<classpathentry kind="lib" path="jars/libs/log4j-api-2.8.1.jar"/>
+	<classpathentry kind="lib" path="jars/libs/log4j-core-2.8.1.jar"/>
+	<classpathentry kind="lib" path="jars/libs/lwjgl-2.9.4-nightly-20150209.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/a.bretelle/Documents/Minecraft2/native/windows64"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Minecraft2/native/windows64"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="jars/guava-21.0.jar"/>
-	<classpathentry kind="lib" path="jars/log4j-api-2.8.1.jar"/>
-	<classpathentry kind="lib" path="jars/log4j-core-2.8.1.jar"/>
-	<classpathentry kind="lib" path="jars/netty-all-4.1.9.Final.jar"/>
-	<classpathentry kind="lib" path="jars/commons-lang3-3.5.jar"/>
-	<classpathentry kind="lib" path="jars/commons-compress-1.8.1.jar"/>
+	<classpathentry kind="lib" path="jars/libs/netty-all-4.1.9.Final.jar"/>
+	<classpathentry kind="lib" path="jars/libs/realms-1.10.17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
