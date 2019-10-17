@@ -14,4 +14,8 @@ public class RegistryNamespaced<K,V> extends RegistrySimple<K,V> implements IObj
 		this.putObject(key, value);
 	}
 
+	public V getObject(K name) {
+		return (V)super.getObject(name);
+	}
+
 }

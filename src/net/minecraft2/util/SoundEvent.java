@@ -12,7 +12,6 @@ public class SoundEvent {
 	}
 	public static void registerSounds() {
 		registerSound("ambient.cave");
-		registerSound("ambient.cave--");
 	}
 	private static void registerSound(String soundName) {
 		ResourceLocation resourceLocation = new ResourceLocation(soundName);

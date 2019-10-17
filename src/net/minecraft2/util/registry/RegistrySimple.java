@@ -33,4 +33,8 @@ public class RegistrySimple<K,V> implements IRegistry<K, V> {
 		this.registryObjects.put(key, value);
 	}
 
+	public V getObject(K name) {
+		return this.registryObjects.get(name);
+	}
+
 }

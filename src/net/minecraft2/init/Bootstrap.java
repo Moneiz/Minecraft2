@@ -30,4 +30,8 @@ public class Bootstrap {
 		}
 	}
 
+	public static boolean isRegistered() {
+		return alreadyRegistered;
+	}
+
 }
