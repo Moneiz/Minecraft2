@@ -3,6 +3,7 @@ package net.minecraft2.init;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import net.minecraft2.block.Block;
 import net.minecraft2.server.DebugLoggingPrintStream;
 import net.minecraft2.util.LoggingPrintStream;
 import net.minecraft2.util.SoundEvent;
@@ -17,6 +18,7 @@ public class Bootstrap {
 			alreadyRegistered = true;
 			redirectOutputToLog();
 			SoundEvent.registerSounds();
+			Block.registerBlocks();
 		}
 	}
 

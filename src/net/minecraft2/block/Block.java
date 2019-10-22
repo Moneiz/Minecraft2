@@ -4,6 +4,7 @@ import net.minecraft2.block.material.MapColor;
 import net.minecraft2.block.material.Material;
 import net.minecraft2.block.properties.IProperty;
 import net.minecraft2.block.state.BlockStateContainer;
+import net.minecraft2.block.state.IBlockState;
 import net.minecraft2.util.ResourceLocation;
 import net.minecraft2.util.registry.RegistryNamespacedDefaultedByKey;
 
@@ -20,6 +21,11 @@ public class Block {
 	protected final Material blockMaterial;
 	protected final MapColor blockMapColor;
 	protected final BlockStateContainer blockState;
+	private IBlockState defaultBlockState;
+	protected boolean fullBlock;
+	protected int lightOpacity;
+	protected boolean translucent;
+	
 	
 	public Block(Material material) {
 		this(material, material.getMaterialMapColor());
@@ -32,10 +38,16 @@ public class Block {
 		this.blockMaterial = material;
 		this.blockMapColor = materialMapColor;
 		this.blockState = this.createBlockState();
-		//this.setDefaultState(this.blockState.getBaseState());
-		//this.fullBlock = this.getDefaultState().isOpaqueCube();
-		//this.lightOpacity = this.fullBlock ? 255 : 0;
-		//this.translucent = !material.blocksLight();
+		this.setDefaultState(this.blockState.getBaseState());
+		this.fullBlock = this.getDefaultState().isOpaqueCube();
+		this.lightOpacity = this.fullBlock ? 255 : 0;
+		this.translucent = !material.blocksLight();
+	}
+	public final IBlockState getDefaultState() {
+		return this.defaultBlockState;
+	}
+	protected final void setDefaultState(IBlockState state) {
+		this.defaultBlockState = state;
 	}
 	private BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[0]);

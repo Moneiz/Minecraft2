@@ -1,9 +1,10 @@
 package net.minecraft2.block.material;
 
 public class MapColor {
-	public static final MapColor AIR = new MapColor(0,0);
 
 	private static final MapColor[] COLORS = new MapColor[64];
+	public static final MapColor AIR = new MapColor(0,0);
+
 	
 	public final int colorIndex;
 	public int colorValue;

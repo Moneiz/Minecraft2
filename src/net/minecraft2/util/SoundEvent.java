@@ -12,6 +12,11 @@ public class SoundEvent {
 	}
 	public static void registerSounds() {
 		registerSound("ambient.cave");
+		registerSound("block.stone.step");
+		registerSound("block.stone.place");
+		registerSound("block.stone.hit");
+		registerSound("block.stone.fall");
+		registerSound("block.stone.break");
 	}
 	private static void registerSound(String soundName) {
 		ResourceLocation resourceLocation = new ResourceLocation(soundName);

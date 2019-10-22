@@ -19,4 +19,8 @@ public class Material {
 	public MapColor getMaterialMapColor() {
 		return this.materialMapColor;
 	}
+
+	public boolean blocksLight() {
+		return true;
+	}
 }

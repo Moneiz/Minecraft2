@@ -13,7 +13,7 @@ public class RegistryNamespaced<K,V> extends RegistrySimple<K,V> implements IObj
 		this.underlyingIntegerMap.put(value, i);
 		this.putObject(key, value);
 	}
-
+	
 	public V getObject(K name) {
 		return (V)super.getObject(name);
 	}
