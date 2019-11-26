@@ -25,6 +25,7 @@ import net.minecraft2.client.main.GameConfiguration;
 import net.minecraft2.client.resources.DefaultResourcePack;
 import net.minecraft2.client.tutorial.Tutorial;
 import net.minecraft2.client.util.Session;
+import net.minecraft2.crash.CrashReport;
 import net.minecraft2.init.Bootstrap;
 import net.minecraft2.profiler.ISnooperInfo;
 import net.minecraft2.profiler.Snooper;
@@ -77,6 +78,7 @@ public class Minecraft implements ISnooperInfo {
 	private final MinecraftSessionService sessionService;
 	private final GuiToast guiToast;
 	private final Tutorial tutorial;
+	volatile boolean running;
 	
 	public Minecraft(GameConfiguration gc) {
 		instance = this;
@@ -148,6 +150,15 @@ public class Minecraft implements ISnooperInfo {
 	}
 
 	public void run() {
-		
+		this.running = true;
+		try {
+			this.startGame();
+		}
+		catch(Throwable throwable) {
+			CrashReport crashReport = CrashReport.makeCrashReport(throwable, "Initializing game");
+			crashReport.makeCategory("Initialization");
+			this.displayCrashReport(this.addGraphicsAndWorldToCrashReport(crashReport));
+			return;
+		}
 	}
 }
