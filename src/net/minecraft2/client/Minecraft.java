@@ -2,6 +2,7 @@ package net.minecraft2.client;
 
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 import java.net.Proxy;
 import java.util.List;
 import java.util.Locale;
@@ -12,6 +13,7 @@ import javax.imageio.ImageIO;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.DisplayMode;
 
@@ -23,6 +25,7 @@ import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import net.minecraft2.client.gui.toasts.GuiToast;
 import net.minecraft2.client.main.GameConfiguration;
 import net.minecraft2.client.resources.DefaultResourcePack;
+import net.minecraft2.client.settings.GameSettings;
 import net.minecraft2.client.tutorial.Tutorial;
 import net.minecraft2.client.util.Session;
 import net.minecraft2.crash.CrashReport;
@@ -148,7 +151,7 @@ public class Minecraft implements ISnooperInfo {
 	public DataFixer getDataFixer() {
 		return dataFixer;
 	}
-
+	// TODO
 	public void run() {
 		this.running = true;
 		try {
@@ -157,8 +160,13 @@ public class Minecraft implements ISnooperInfo {
 		catch(Throwable throwable) {
 			CrashReport crashReport = CrashReport.makeCrashReport(throwable, "Initializing game");
 			crashReport.makeCategory("Initialization");
-			this.displayCrashReport(this.addGraphicsAndWorldToCrashReport(crashReport));
+			//this.displayCrashReport(this.addGraphicsAndWorldToCrashReport(crashReport));
 			return;
 		}
+	}
+
+	private void startGame() throws LWJGLException, IOException {
+		this.gameSettings = new GameSettings(this, this.mcDataDir);
+		
 	}
 }
