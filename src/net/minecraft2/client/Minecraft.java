@@ -82,6 +82,7 @@ public class Minecraft implements ISnooperInfo {
 	private final GuiToast guiToast;
 	private final Tutorial tutorial;
 	volatile boolean running;
+	public GameSettings gameSettings;
 	
 	public Minecraft(GameConfiguration gc) {
 		instance = this;
