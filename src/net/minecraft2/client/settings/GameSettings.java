@@ -18,7 +18,11 @@ import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 
 import net.minecraft2.client.settings.KeyBinding;
+import net.minecraft2.client.util.TutorialSteps;
 import net.minecraft2.entity.player.EntityPlayer;
+import net.minecraft2.entity.player.EnumPlayerModelParts;
+import net.minecraft2.util.EnumHandSide;
+import net.minecraft2.util.SoundCategory;
 import net.minecraft2.client.Minecraft;
 
 public class GameSettings {
